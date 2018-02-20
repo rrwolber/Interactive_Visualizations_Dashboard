@@ -25,7 +25,7 @@ def names():
     for row in results:
         names.append("BB_" + str(row[0]))
 
-    return names
+    return jsonify(names)
 
 
 #Route to return list of OTU descriptions
