@@ -1,13 +1,14 @@
-function buildPlot() {
+function PiePlot() {
     var url = "/samples/<sample>";
     Plotly.d3.json(url, function(error, response){
         if (error) {
             return console.warn(error);
         }
         var layout = {
+            title: "Bacteria Present"
             };
-        Plotly.newPlot('plot', [response], layout);
+        Plotly.newPlot('BBBpie', [response], layout);
     });
 }
 
-buildPlot();
+PiePlot();

@@ -88,7 +88,7 @@ def samples(sample):
     data = {
     'values': sample_values,
     'labels': otu_ids,
-    'type': 'bar'
+    'type': 'pie'
     }
 
     return jsonify(data)

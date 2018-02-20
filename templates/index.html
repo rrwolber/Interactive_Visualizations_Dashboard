@@ -31,27 +31,27 @@
       <div class="col-md-4">
           <div class="container" style="position:relative; top:50px;margin:50px; border:solid; border-color:black; height:200px;width:175px; top: 20px;">
             <h3>Placeholder for stats</h3>
-            <div id="plot"></div>
+            <div id="table"></div>
           </div>
       </div>
       <div class="col-md-8">
         <div class="container" style="margin:10px; position:relative; top:-10px; border:solid; border-color:black; height:400px;width:400px; left:100px;">
           <h3>Placeholder for Pie</h3>
-          <div id="plot"></div>
+          <div id="BBBpie"></div>
       </div>
     </div>
   </div>
   <div class="row" style="position:relative;top:50px;">
-      <div class="col-md-12">
-          <div class="container" style="margin:10px; border:solid; border-color:black; height:500px;width:100%;">
-            <h3>Placeholder for Bubble</h3>
-            <div id="plot"></div>
-          </div>
-      </div>
+    <div class="col-md-12">
+        <div class="container" style="margin:10px; border:solid; border-color:black; height:500px;width:100%;">
+          <h3>Placeholder for Bubble</h3>
+          <div id="BubbleData"></div>
+        </div>
     </div>
-
-  <div id="plot"></div>
+  </div>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="{{ url_for('static', filename='js/dropdown.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bubble.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/pie.js') }}"></script>
 </body>
 </html
