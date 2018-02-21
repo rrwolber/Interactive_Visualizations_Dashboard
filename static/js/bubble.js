@@ -1,10 +1,6 @@
 var trace1 = {
-    x: [1, 2, 3, 4],
-    y: [10, 11, 12, 13],
-    mode: 'markers',
-    marker: {
-      size: [40, 60, 80, 100]
-    }
+    x: response
+    y: response
   };
   
   var data = [trace1];
@@ -16,4 +12,4 @@ var trace1 = {
     width: 600
   };
   
-  Plotly.newPlot('BubbleData', data, layout);
+  Plotly.newPlot('BubbleData', [response], layout);

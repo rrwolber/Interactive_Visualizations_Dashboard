@@ -19,7 +19,7 @@ def home():
 @app.route('/names')
 def names():
     results = (session
-               .query(meta.SAMPLEID)
+               .query(samples_metadata.SAMPLEID)
                .all())
     names = []
     for row in results:
@@ -28,70 +28,70 @@ def names():
     return jsonify(names)
 
 
-#Route to return list of OTU descriptions
-@app.route('/otu')
-def otu():
-    results = (session
-               .query(otu.lowest_taxonomic_unit_found)
-               .all())
-    descriptions = []
-    for row in results:
-        descriptions.append(row[])
-    return descriptions
+# #Route to return list of OTU descriptions
+# @app.route('/otu')
+# def otu():
+#     results = (session
+#                .query(otu.lowest_taxonomic_unit_found)
+#                .all())
+#     descriptions = []
+#     for row in results:
+#         descriptions.append(row)
+#     return descriptions
 
 
-#metadata for a given sample
-@app.route('/metadata/<sample>')
-def metadata(sample):
-    results = session.query(meta).all()
+# #metadata for a given sample
+# @app.route('/metadata/<sample>')
+# def metadata(sample):
+#     results = session.query(meta).all()
     
-    metasample = []
+#     metasample = []
 
-    for result in results:
-        row = {}
-        row["SAMPLEID"] = results[1]
-        row["ETHNICITY"] = results[3]
-        row["GENDER"] = results[4]
-        row["AGE"] = results[5]
-        row["BBTYPE"] = results[7]
-        row["LOCATION"] = results[8]
-        metasample.append(row)
+#     for result in results:
+#         row = {}
+#         row["SAMPLEID"] = results[1]
+#         row["ETHNICITY"] = results[3]
+#         row["GENDER"] = results[4]
+#         row["AGE"] = results[5]
+#         row["BBTYPE"] = results[7]
+#         row["LOCATION"] = results[8]
+#         metasample.append(row)
 
-    return jsonify(metasample)
+#     return jsonify(metasample)
 
 
-#Weekly washing frequency as a number
-@app.route('/wfreq/<sample>')
-def wwf(sample):
+# #Weekly washing frequency as a number
+# @app.route('/wfreq/<sample>')
+# def wwf(sample):
 
-    freq = session.query(meta.WFREQ, meta.SAMPLEID).filter(SAMPLEID ==  sample).all()
+#     freq = session.query(meta.WFREQ, meta.SAMPLEID).filter(SAMPLEID ==  sample).all()
 
-    return freq
+#     return freq
 
 
 
 #OTU IDs and Sample Values for a given sample.
-@app.route('/samples/<sample>')
-def samples(sample):
+# @app.route('/samples/<sample>')
+# def samples(sample):
 
-    current = samples[sample].tolist()
-    results = session.query(otu.otu_id).all()
-    i = 0
-    otu_ids = []
-    sample_values = []
+#     current = samples[sample].tolist()
+#     results = session.query(otu.otu_id).all()
+#     i = 0
+#     otu_ids = []
+#     sample_values = []
 
-    for i in range(len(current)):
-        if current[i] /= 0:
-            otu_ids.append(results[i])
-            sample_values.append(current[i])
+#     for i in range(len(current)):
+#         if current[i] /= 0:
+#             otu_ids.append(results[i])
+#             sample_values.append(current[i])
 
-    data = {
-    'values': sample_values,
-    'labels': otu_ids,
-    'type': 'pie'
-    }
+#     data = {
+#     'values': sample_values,
+#     'labels': otu_ids,
+#     'type': 'pie'
+#     }
 
-    return jsonify(data)
+#     return jsonify(data)
 
 
 if __name__ == "__main__":
